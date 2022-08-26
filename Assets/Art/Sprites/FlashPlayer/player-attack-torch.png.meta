@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b584a66a2afc4f04385d0de85ac0345c
+guid: 701e15da63906cc44af56c97f4ee69fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-attack-up-torch 1_0
+      name: player-attack-torch_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3526f134a0770da43be3f2a121bd5b8c
-      internalID: -967283536
+      spriteID: 59ed637d701b90140bd108d3cc13e2c4
+      internalID: 1100526874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-attack-up-torch 1_1
+      name: player-attack-torch_1
       rect:
         serializedVersion: 2
         x: 64
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41ff79bbef60ceb43a5e79b1229f7175
-      internalID: 2070113663
+      spriteID: 246f564caf055ae40ba61288a4233a79
+      internalID: 2027351834
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-attack-up-torch 1_0: -967283536
-      player-attack-up-torch 1_1: 2070113663
+      player-attack-torch_1: 2027351834
+      player-attack-torch_0: 1100526874
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
