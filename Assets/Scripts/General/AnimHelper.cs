@@ -26,7 +26,6 @@ public static class AnimHelper
 
         // play the new animation clip
         anim.Play(newState);
-        Debug.Log(newState);
 
         // set the current state to the new state 
         currentState = newState;

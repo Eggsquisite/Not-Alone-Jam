@@ -30,25 +30,11 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     // PLAYER ANIMATION METHODS
-    public void IdleAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_IDLE);
-    }
-    public void WalkAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_WALK);
-    }
-    public void RunAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_RUN);
-    }
-    public void AttackAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_ATTACK);
-    }
-    public void AttackUpAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_ATTACK_UP);
-    }
-    public void HurtAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_HURT);
-    }
-    public void DeathAnim() {
-        PlayAnimation(PlayerAnimHelper.PLAYER_DEATH);
-    }
+    public void IdleAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_IDLE); }
+    public void WalkAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_WALK); }
+    public void RunAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_RUN); }
+    public void AttackAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_ATTACK); }
+    public void AttackUpAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_ATTACK_UP); }
+    public void HurtAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_HURT); }
+    public void DeathAnim() { PlayAnimation(PlayerAnimHelper.PLAYER_DEATH); }
 }
