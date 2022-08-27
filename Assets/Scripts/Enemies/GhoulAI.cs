@@ -9,11 +9,18 @@ public class GhoulAI : MonoBehaviour
     [SerializeField] private LayerMask PlayerMask;
 
     [Header("Movement Values")]
+    [SerializeField] private Transform searchPos;
+    [SerializeField] private Transform attackPos;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float rayDistance;
+    [SerializeField] private float searchDistance;
+    [SerializeField] private float attackDistance;
 
     private bool followFlag;
+    RaycastHit2D searchLeft, searchRight, hitRight, hitLeft;
     private Transform playerFoundRight, playerFoundLeft, targetPlayer;
+
+    [Header("Attack Values")]
+    [SerializeField] private float attackDelay;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -23,42 +30,93 @@ public class GhoulAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance, PlayerMask);
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, rayDistance, PlayerMask);
+        if (!followFlag)
+            Search();
+    }
 
-        if (hitRight.collider != null) {
+    private void Search() {
+        if (searchPos == null) {
+            searchLeft = Physics2D.Raycast(transform.position, Vector2.left, searchDistance, PlayerMask);
+            searchRight = Physics2D.Raycast(transform.position, Vector2.right, searchDistance, PlayerMask);
+        } else {
+            searchLeft = Physics2D.Raycast(searchPos.position, Vector2.left, searchDistance, PlayerMask);
+            searchRight = Physics2D.Raycast(searchPos.position, Vector2.right, searchDistance, PlayerMask);
+        }
+
+        if (searchRight.collider != null) {
             if (!followFlag)
                 followFlag = true;
 
-            playerFoundRight = hitRight.transform;
+            targetPlayer = searchRight.transform;
+            
+            /*
+            playerFoundRight = searchRight.transform;
             if (playerFoundLeft == null)
                 playerFoundLeft = playerFoundRight;
 
             // If new player found is closer than the target player, switch targets
             if (playerFoundRight.position.x - transform.position.x < targetPlayer.position.x - transform.position.x)
                 targetPlayer = playerFoundRight;
+            */
         }
 
-        if (hitLeft.collider != null) {
+        if (searchLeft.collider != null) {
             if (!followFlag)
                 followFlag = true;
 
-            playerFoundLeft = hitLeft.transform;
+            targetPlayer = searchLeft.transform;
+
+            /*
+            playerFoundLeft = searchLeft.transform;
             if (playerFoundRight == null)
                 playerFoundRight = playerFoundLeft;
 
             // If new player found is closer than the target player, switch targets
             if (playerFoundLeft.position.x - transform.position.x < targetPlayer.position.x - transform.position.x)
                 targetPlayer = playerFoundLeft;
+            */
         }
     }
 
-    public void Movement() {
+    public float Movement() {
         if (!followFlag)
-            return;
+            return 0;
 
         // Follow the closest player
         Vector2 direction = (targetPlayer.position - transform.position).normalized;
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        //transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPlayer.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+
+        if (transform.position.x > targetPlayer.position.x)
+            return -1;
+        else if (transform.position.x <= targetPlayer.position.x)
+            return 1;
+
+        return 0;
+    }
+
+    public int Attack() {
+        if (attackPos == null) {
+            hitLeft = Physics2D.Raycast(transform.position, Vector2.left, attackDistance, PlayerMask);
+            hitRight = Physics2D.Raycast(transform.position, Vector2.right, attackDistance, PlayerMask);
+        } else {
+            hitLeft = Physics2D.Raycast(attackPos.position, Vector2.left, attackDistance, PlayerMask);
+            hitRight = Physics2D.Raycast(attackPos.position, Vector2.right, attackDistance, PlayerMask);
+        }
+
+        if (hitLeft.collider != null && hitRight.collider != null) 
+            return (int)Random.Range(1, 2);
+        else if (hitLeft.collider != null)
+            return 1;
+        else if (hitRight.collider != null)
+            return 2;
+        else if (hitRight.collider == null && hitLeft.collider == null)
+            return 0;
+
+        return 0;
+    }
+
+    public float GetAttackDelay() {
+        return attackDelay;
     }
 }

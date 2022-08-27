@@ -23,7 +23,7 @@ public class EnemyAnimation : MonoBehaviour
     private void ReplayAnimation(string newAnim) {
         AnimHelper.ReplayAnimation(anim, ref currentState, newAnim);
     }
-    private float GetAnimationLength(string newAnim) {
+    public float GetAnimationLength(string newAnim) {
         return AnimHelper.GetAnimClipLength(ac, newAnim);
     }
 
