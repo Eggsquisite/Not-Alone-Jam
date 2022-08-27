@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 701e15da63906cc44af56c97f4ee69fb
+guid: 6ed1b1731a1cf9649803364095bf3803
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-attack-torch_0
+      name: player-death-torch_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59ed637d701b90140bd108d3cc13e2c4
-      internalID: 1100526874
+      spriteID: 8b8dbc116492a3744b6a1de92d5be059
+      internalID: 253463640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-attack-torch_1
+      name: player-death-torch_1
       rect:
         serializedVersion: 2
         x: 64
@@ -151,8 +151,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 246f564caf055ae40ba61288a4233a79
-      internalID: 2027351834
+      spriteID: 0a8dece10c7a04b4a8ea4e486ee757b6
+      internalID: 1967606788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-death-torch_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a0b5ee1ca003444fadea3aadab15b86
+      internalID: 1203447831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-death-torch_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54dccd86a31fd734198cab7e41efb006
+      internalID: 1842555650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-death-torch_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a53b264bee0365448b32aea5bce8062
+      internalID: -164604933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-death-torch_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb206bdbcc88317468d25a572e71fad7
+      internalID: 519264630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-death-torch_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88863a97c1024ba45afbdc0f46d5915c
+      internalID: 835993385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-death-torch_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28a594184bbcd1341942d7736b743273
+      internalID: -2026402771
       vertices: []
       indices: 
       edges: []
@@ -168,8 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-attack-torch_1: 2027351834
-      player-attack-torch_0: 1100526874
+      player-death-torch_1: 1967606788
+      player-death-torch_2: 1203447831
+      player-death-torch_4: -164604933
+      player-death-torch_7: -2026402771
+      player-death-torch_3: 1842555650
+      player-death-torch_5: 519264630
+      player-death-torch_0: 253463640
+      player-death-torch_6: 835993385
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

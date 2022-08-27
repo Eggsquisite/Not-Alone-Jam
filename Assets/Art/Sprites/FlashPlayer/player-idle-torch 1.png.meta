@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 666619981bc14ae44bf714216024dc2d
+guid: df3e7492f6d56b04e88473db8bfe2704
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-death_0
+      name: player-idle-torch 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a195454bb757702489cae3bab0d3ad90
-      internalID: -1240805854
+      spriteID: 21992d9f5a6be804fa274d2e09724244
+      internalID: 652624300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-death_1
+      name: player-idle-torch 1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62ef79d0cd6b8ca4ea0caa6417dfa739
-      internalID: -1890903131
+      spriteID: 61285762f35a9b54fbf021eb9a6a1b1e
+      internalID: 56839107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-death_2
+      name: player-idle-torch 1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bb6545f676f0d149877b9eb559c6681
-      internalID: -1042707080
+      spriteID: 73734dd6c6b209e4b9daf4932ffbdeef
+      internalID: -475318638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-death_3
+      name: player-idle-torch 1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -193,92 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf619bd0f1aadcc4ba4179f1234e0bcb
-      internalID: -1881496866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-death_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 514a6e504e3ca444084ce669dbb9504a
-      internalID: 398160384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-death_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c07ee3e7a2bb39e41bfb0ed65905b04e
-      internalID: -1703868330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-death_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e7c7e8a002cbb1469f9601346966074
-      internalID: -1794927934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-death_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 097eba4a8d887b242ad2156d922a0197
-      internalID: 469200363
+      spriteID: 94da6c4620c1bc94ba9945b0f4d90cc7
+      internalID: -2071039953
       vertices: []
       indices: 
       edges: []
@@ -294,14 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-death_1: -1890903131
-      player-death_0: -1240805854
-      player-death_4: 398160384
-      player-death_7: 469200363
-      player-death_3: -1881496866
-      player-death_5: -1703868330
-      player-death_2: -1042707080
-      player-death_6: -1794927934
+      player-idle-torch 1_3: -2071039953
+      player-idle-torch 1_2: -475318638
+      player-idle-torch 1_0: 652624300
+      player-idle-torch 1_1: 56839107
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

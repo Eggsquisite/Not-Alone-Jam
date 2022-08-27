@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa12ec99682deb74a8de514fa4b8993f
+guid: a2bae7ea87fa3354daf87de776d6c9b7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-run-torch_0
+      name: player-walk-torch 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97a999f04f1afb44691d89d70518fac5
-      internalID: -111159201
+      spriteID: baac52ba6831ac649ae2558ebbd0c53b
+      internalID: -1803010505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-run-torch_1
+      name: player-walk-torch 1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad012c68bac18b14ba494180373d4ce5
-      internalID: 1193073541
+      spriteID: fbb00dcb2e4a82847a871e1a18e26302
+      internalID: -360633869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-run-torch_2
+      name: player-walk-torch 1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 603894941619da645b33be3eec3f81ca
-      internalID: 1615880336
+      spriteID: 729e051a0afda9c4e9afb62b82a96e71
+      internalID: 1611727525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-run-torch_3
+      name: player-walk-torch 1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c11ae6dd05ca56c42afd1efd82dfd8e2
-      internalID: 1527574270
+      spriteID: b14f832ee2c80f54bbacce04927186f5
+      internalID: 742073959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-run-torch_4
+      name: player-walk-torch 1_4
       rect:
         serializedVersion: 2
         x: 256
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e186651af6fcba4fab35260fd420a22
-      internalID: 1158602758
+      spriteID: 8161764e163de4f4ba47bbd47f958c9c
+      internalID: 1256176161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-run-torch_5
+      name: player-walk-torch 1_5
       rect:
         serializedVersion: 2
         x: 320
@@ -235,8 +235,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d98f4c04e478fc4498ced657a4ace8fc
-      internalID: -233967728
+      spriteID: 7c864538b5bccc64f88630fa1cd36b20
+      internalID: 591223618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-walk-torch 1_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c983ba92a4d699499221003b1cb5247
+      internalID: 827253572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-walk-torch 1_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c1622442b4b0a40a027b2633e56d77
+      internalID: 975713137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-walk-torch 1_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84515e293fe0a241b89a9294a65e915
+      internalID: -68790830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-walk-torch 1_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a356111c1b7bbc04a8ec8c69202ea50b
+      internalID: 985582859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-walk-torch 1_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3bc8f64406b4241a103083a7eb21a9
+      internalID: 227542280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-walk-torch 1_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1593b79f3d72e5948b4b2cc4a600f6ec
+      internalID: -945495652
       vertices: []
       indices: 
       edges: []
@@ -252,12 +378,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-run-torch_1: 1193073541
-      player-run-torch_3: 1527574270
-      player-run-torch_2: 1615880336
-      player-run-torch_0: -111159201
-      player-run-torch_5: -233967728
-      player-run-torch_4: 1158602758
+      player-walk-torch 1_3: 742073959
+      player-walk-torch 1_1: -360633869
+      player-walk-torch 1_11: -945495652
+      player-walk-torch 1_4: 1256176161
+      player-walk-torch 1_10: 227542280
+      player-walk-torch 1_2: 1611727525
+      player-walk-torch 1_7: 975713137
+      player-walk-torch 1_5: 591223618
+      player-walk-torch 1_9: 985582859
+      player-walk-torch 1_0: -1803010505
+      player-walk-torch 1_6: 827253572
+      player-walk-torch 1_8: -68790830
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

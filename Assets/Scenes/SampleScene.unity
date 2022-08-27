@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 70252142}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,13 +737,13 @@ GameObject:
   - component: {fileID: 649013100}
   - component: {fileID: 649013101}
   - component: {fileID: 649013102}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Focused Light (straight)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &649013100
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 977410995}
   - component: {fileID: 977410996}
   - component: {fileID: 977410997}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Focused Light (up)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1833,7 @@ SpriteRenderer:
   m_SortingLayerID: -1988680045
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1854634332, guid: 8e0b14273568be145afa7af082302062, type: 3}
+  m_Sprite: {fileID: 652624300, guid: df3e7492f6d56b04e88473db8bfe2704, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2143,13 +2143,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2025700400}
   - component: {fileID: 2025700401}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Flashlight Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2025700400
 Transform:
   m_ObjectHideFlags: 0

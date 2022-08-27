@@ -93,9 +93,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 934294359, guid: 199ae2265a237de4db6c40a824c837bf, type: 3}
+      value: {fileID: -994265450, guid: 6862bafc052b7e145bb2532b46748184, type: 3}
     - time: 0.25
-      value: {fileID: 934294359, guid: 199ae2265a237de4db6c40a824c837bf, type: 3}
+      value: {fileID: -994265450, guid: 6862bafc052b7e145bb2532b46748184, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -143,8 +143,8 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 934294359, guid: 199ae2265a237de4db6c40a824c837bf, type: 3}
-    - {fileID: 934294359, guid: 199ae2265a237de4db6c40a824c837bf, type: 3}
+    - {fileID: -994265450, guid: 6862bafc052b7e145bb2532b46748184, type: 3}
+    - {fileID: -994265450, guid: 6862bafc052b7e145bb2532b46748184, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

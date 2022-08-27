@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e0b14273568be145afa7af082302062
+guid: 6862bafc052b7e145bb2532b46748184
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-idle-torch_0
+      name: player-attack-up-torch 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d311f00b8c97d37428c83705f46b23cf
-      internalID: 1854634332
+      spriteID: bc13b62fe4e331948a1cc83d77df62c6
+      internalID: -994265450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-idle-torch_1
+      name: player-attack-up-torch 1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -151,50 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e19faf5c9537e6347ac5160b0434f38f
-      internalID: -186722396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-idle-torch_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 919239b0c860e014b86c5cc0db9585cc
-      internalID: -1407755493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-idle-torch_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd986f19435feb641bbd7e20e0a613a4
-      internalID: 793482764
+      spriteID: 51267fbfd99f1e74bbb9ea36db9803ab
+      internalID: 2029871046
       vertices: []
       indices: 
       edges: []
@@ -210,10 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-idle-torch_3: 793482764
-      player-idle-torch_2: -1407755493
-      player-idle-torch_0: 1854634332
-      player-idle-torch_1: -186722396
+      player-attack-up-torch 1_0: -994265450
+      player-attack-up-torch 1_1: 2029871046
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

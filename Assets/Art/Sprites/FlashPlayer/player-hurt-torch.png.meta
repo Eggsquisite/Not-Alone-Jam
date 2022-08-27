@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a99b63e8b6dc584d9d752921e92383b
+guid: f70a808924fcdaf4db12fc579fac6d5d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-hurt_0
+      name: player-hurt-torch_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e4bab65a8e6f02439cdd836f5cc5ace
-      internalID: -1580916924
+      spriteID: efbbec7f313e9a44f80b73e4d7dd758c
+      internalID: 983894043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-hurt_1
+      name: player-hurt-torch_1
       rect:
         serializedVersion: 2
         x: 64
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f75a805fc0de574caeffbd65fb0057f
-      internalID: -190550053
+      spriteID: 6e701bb63b0f93d4a9347e740b485c61
+      internalID: 2000916791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-hurt_2
+      name: player-hurt-torch_2
       rect:
         serializedVersion: 2
         x: 128
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5c0d08c5376b734e86e5a5c4f6ebcf8
-      internalID: 656133179
+      spriteID: f43a1f99a6ab6ec43a665c866111099e
+      internalID: -1092885912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-hurt_3
+      name: player-hurt-torch_3
       rect:
         serializedVersion: 2
         x: 192
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d888202b959d2a46aaad263e4d877a9
-      internalID: 166564187
+      spriteID: 4f07f50594877bb4ab9e574295cf141c
+      internalID: -493847538
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-hurt_3: 166564187
-      player-hurt_1: -190550053
-      player-hurt_2: 656133179
-      player-hurt_0: -1580916924
+      player-hurt-torch_0: 983894043
+      player-hurt-torch_3: -493847538
+      player-hurt-torch_1: 2000916791
+      player-hurt-torch_2: -1092885912
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
