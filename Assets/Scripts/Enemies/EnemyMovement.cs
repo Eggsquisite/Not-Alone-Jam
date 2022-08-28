@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhoulAI : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody2D rb;
     [SerializeField] private LayerMask PlayerMask;
 
-    [Header("Movement Values")]
+    [Header("Position Values")]
     [SerializeField] private Transform searchPos;
     [SerializeField] private Transform attackPos;
-    [SerializeField] private float moveSpeed;
     [SerializeField] private float searchDistance;
     [SerializeField] private float attackDistance;
-
-    private bool followFlag;
     RaycastHit2D searchLeft, searchRight, hitRight, hitLeft;
     private Transform playerFoundRight, playerFoundLeft, targetPlayer;
+
+    [Header("Movement Values")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float minMoveSpeed;
+
+    private float baseMoveSpeed, speedToUpdateMoveSpeed;
+    private bool followFlag, isBurning;
 
     [Header("Attack Values")]
     [SerializeField] private float attackDelay;
 
     private void Awake() {
+        baseMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
-        targetPlayer = GameObject.FindGameObjectWithTag("Player").transform;
+        targetPlayer = null;
     }
 
     // Update is called once per frame
@@ -32,6 +37,9 @@ public class GhoulAI : MonoBehaviour
     {
         if (!followFlag)
             Search();
+
+        if (!isBurning)
+            ResetMoveSpeed();
     }
 
     private void Search() {
@@ -83,9 +91,9 @@ public class GhoulAI : MonoBehaviour
             return 0;
 
         // Follow the closest player
-        Vector2 direction = (targetPlayer.position - transform.position).normalized;
-        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
-        //transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPlayer.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+        //Vector2 direction = (targetPlayer.position - transform.position).normalized;
+        //rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPlayer.position.x, transform.position.y), moveSpeed * Time.deltaTime);
 
         if (transform.position.x > targetPlayer.position.x)
             return -1;
@@ -93,6 +101,28 @@ public class GhoulAI : MonoBehaviour
             return 1;
 
         return 0;
+    }
+
+    public void ResetMoveSpeed() {
+        if (isBurning)
+            isBurning = false;
+
+        if (moveSpeed < baseMoveSpeed) 
+            moveSpeed += Time.deltaTime * speedToUpdateMoveSpeed;
+        else if (moveSpeed > baseMoveSpeed) 
+            moveSpeed = baseMoveSpeed;
+    }
+
+    public void SlowMoveSpeed(float maxBurnTime) {
+        if (!isBurning)
+            isBurning = true;
+
+        speedToUpdateMoveSpeed = minMoveSpeed / maxBurnTime;
+
+        if (moveSpeed > minMoveSpeed) 
+            moveSpeed -= Time.deltaTime * speedToUpdateMoveSpeed;
+        else if (moveSpeed < minMoveSpeed) 
+            moveSpeed = minMoveSpeed;
     }
 
     public int Attack() {
