@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     [Header("Players")]
     [SerializeField] private PlayerInput otherPlayerInput;
     [SerializeField] private float switchDelay;
+    [SerializeField] private GameObject arrow;
     private bool switchReady = true;
-    private bool mainCharacter;
+    private bool activePlayer;
 
     [Header("Components")]
     private Animator anim;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCombat pc;
     private PlayerMovement pm;
     private PlayerAnimation pa;
+    private PlayerSFX ps;
 
     [Header("Movement Values")]
     [SerializeField] private float walkSpeed;
@@ -45,7 +47,8 @@ public class PlayerController : MonoBehaviour
         if (pm == null) pm = GetComponent<PlayerMovement>();
         if (pa == null) pa = GetComponent<PlayerAnimation>();
         if (pc == null) pc = GetComponent<PlayerCombat>();
-
+        if (ps == null) ps = GetComponent<PlayerSFX>();
+    
         if (meleePlayer) attackReady = true;
         hurtAnimLength = pa.GetAnimationLength(PlayerAnimHelper.PLAYER_HURT);
         attackAnimLength = pa.GetAnimationLength(PlayerAnimHelper.PLAYER_ATTACK);
@@ -61,8 +64,11 @@ public class PlayerController : MonoBehaviour
             pi.SetPlayerType(2);
 
         // If playing single player, turn melee character off initially
-        if (gameState == 1 && meleePlayer) {
-            pi.enabled = false;
+        if (gameState == 1) {
+            if (meleePlayer)
+                pi.enabled = false;
+            else if (flashPlayer)
+                activePlayer = true;
         } 
     }
 
@@ -70,10 +76,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SwitchPlayer();
+        SetActiveVariables();
         ResetFlashPlayerAttack();
         if (!isDead && !isHurt && !isAttacking) {
             Movement();
             Animate();
+        }
+    }
+
+    private void SetActiveVariables() {
+        if (!pi.enabled && activePlayer) {
+            activePlayer = false;
+            arrow.SetActive(false);
+        }
+        else if (pi.enabled && !activePlayer) {
+            activePlayer = true;
+            arrow.SetActive(true);
         }
     }
 
@@ -108,11 +126,11 @@ public class PlayerController : MonoBehaviour
         // AI CONTROLLED MOVEMENT
         if (!pi.enabled) {
             if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) > maxDistanceToPlayer) 
-                pm.AIMovement(otherPlayerInput.transform, runSpeed / 2);
+                pm.AIMovement(otherPlayerInput.transform, runSpeed - 1f);
             else if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) >= minDistanceToPlayer) 
-                pm.AIMovement(otherPlayerInput.transform, walkSpeed / 2);
+                pm.AIMovement(otherPlayerInput.transform, walkSpeed - 0.5f);
             else if (meleePlayer && otherPlayerInput.GetOtherPlayerAttackPressed()) {
-                // PLAYER CONTROLLING AI MOVEMENT
+                // TODO PLAYER CONTROLLING AI MOVEMENT
                 Debug.Log("Hello");
                 if (!otherPlayerInput.GetRunInput())
                     pm.Movement(otherPlayerInput.GetXAxis(), walkSpeed);
@@ -146,16 +164,20 @@ public class PlayerController : MonoBehaviour
             if (flashPlayer) {
                 if (otherPlayerInput.GetOtherPlayerAttackPressed() && pi.GetYAxis() > 0) {
                     isAttacking = true;
+                    AIAttackDirection();
                     pa.AttackUpAnim();
                 }
                 else if (otherPlayerInput.GetOtherPlayerAttackPressed()) {
                     isAttacking = true;
+                    AIAttackDirection();
                     pa.AttackAnim();
                 }
             } 
             else if (meleePlayer) {
-                if (otherPlayerInput.GetOtherPlayerAttackPressed() && attackReady)
+                if (otherPlayerInput.GetOtherPlayerAttackPressed() && attackReady) {
+                    AIAttackDirection();
                     StartCoroutine(MeleeAttack());
+                }
             }
 
             return;
@@ -164,8 +186,10 @@ public class PlayerController : MonoBehaviour
         if (flashPlayer) {
             if (pi.GetAttackPressed() && pi.GetYAxis() > 0) 
                 pa.AttackUpAnim();
-            else if (pi.GetAttackPressed())
+            else if (pi.GetAttackPressed()) {
+                ps.PlayAttackSFX();
                 pa.AttackAnim();
+            }
             else if (pi.GetXAxis() == 0)
                 pa.IdleAnim();
             else if (pi.GetXAxis() != 0 && !pi.GetRunInput()) {
@@ -212,10 +236,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void AIAttackDirection() {
+        if (pc.AIAttack() == 1)
+            transform.localScale = new Vector2(-1f, transform.localScale.y);
+        else if (pc.AIAttack() == 2)
+            transform.localScale = new Vector2(1f, transform.localScale.y);
+    }
+
     IEnumerator MeleeAttack() {
         pa.AttackAnim();
         isAttacking = true;
         attackReady = false;
+        ps.PlayAttackSFX();
         yield return new WaitForSeconds(attackAnimLength);
 
         isAttacking = false;
@@ -224,9 +256,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public void TakeDamage(int damage) {
-        if (isInvincible)
+        if (isInvincible || isDead)
             return;
 
+        ps.PlayHurtSFX();
         pc.TakeDamage(damage);
         if (pc.GetCurrentHealth() <= 0)
             Death();
@@ -248,6 +281,17 @@ public class PlayerController : MonoBehaviour
     private void Death() {
         isDead = true;
         pa.DeathAnim();
+        ps.PlayDeathSFX();
+        pc.enabled = false;
+        pi.enabled = false;
+        ps.enabled = false;
     }
 
+    public bool GetActivePlayer() {
+        return activePlayer;
+    }
+
+    public bool GetIsDead() {
+        return isDead;
+    }
 }

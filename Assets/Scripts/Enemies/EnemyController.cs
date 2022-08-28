@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
     private EnemyAnimation ea;
     private EnemyCombat ec;
     private EnemyMovement em;
+    private EnemySFX es;
     private SpriteRenderer sp;
 
     [Header("Enemy Specific")]
@@ -54,6 +55,7 @@ public class EnemyController : MonoBehaviour
         if (ea == null) ea = GetComponent<EnemyAnimation>();
         if (ec == null) ec = GetComponent<EnemyCombat>();
         if (em == null) em = GetComponent<EnemyMovement>();
+        if (es == null) es = GetComponent<EnemySFX>();
         if (sp == null) sp = GetComponent<SpriteRenderer>();
 
         currentHealth = maxHealth;
@@ -85,8 +87,10 @@ public class EnemyController : MonoBehaviour
 
     private void Death() {
         if (ec.GetFullyBurned() || ec.GetCurrentHealth() <= 0) {
-            if (enemyState != EnemyState.Death) 
+            if (enemyState != EnemyState.Death) {
+                es.PlayDeathSFX();
                 enemyState = EnemyState.Death;  
+            }
 
             if (oneRoutine != null)
                 StopCoroutine(oneRoutine);
@@ -104,9 +108,9 @@ public class EnemyController : MonoBehaviour
         if (isInvincible)
             return;
 
+        es.PlayHurtSFX();
         ec.TakeDamage(damage);
         if (ec.GetCurrentHealth() > 0) {
-            Debug.Log("taking dmg");
             if (oneRoutine != null)
                 StopCoroutine(oneRoutine);
             oneRoutine = StartCoroutine(HurtDelay());
@@ -182,8 +186,8 @@ public class EnemyController : MonoBehaviour
     }
 
     IEnumerator AttackDelay() {
+        es.PlayAttackSFX();
         attackReady = false;
-        Debug.Log("Attacking");
         yield return new WaitForSeconds(0.5f);
 
         ea.AttackAnim();

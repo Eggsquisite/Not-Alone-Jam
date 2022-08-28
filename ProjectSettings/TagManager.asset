@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AttackLight
+  - MusicManager
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 3872703425
+    locked: 0
+  - name: UI
+    uniqueID: 3134333951
     locked: 0

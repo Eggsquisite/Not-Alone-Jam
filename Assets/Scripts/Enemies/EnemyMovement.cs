@@ -122,6 +122,7 @@ public class EnemyMovement : MonoBehaviour
             moveSpeed = minMoveSpeed;
     }
 
+    // WHY IS THIS ATTACK FUNCTION IN ENEMY MOVEMENT
     public int Attack() {
         if (attackPos == null) {
             hitLeft = Physics2D.Raycast(transform.position, Vector2.left, attackDistance, PlayerMask);
