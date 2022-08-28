@@ -20,4 +20,9 @@ public class PlayerMovement : MonoBehaviour
         movement = new Vector2(xAxis, 0f);
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
+
+    public void AIMovement(Transform targetPlayer, float speed) {
+        // If AI is further than 5m away from player, move towards player
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPlayer.position.x, transform.position.y), speed * Time.deltaTime);
+    }
 }

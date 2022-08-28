@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
     private int gameState;
     private float xAxis, yAxis;
     private bool runHeld, attackPressed, aimUpHeld, switchCharPressed;
-    private bool meleePlayer, flashPlayer;
+    private bool meleePlayer, flashPlayer, activePlayer, otherPlayerAttack;
 
     void OnDisable() {
         ResetVariables();
@@ -15,14 +15,17 @@ public class PlayerInput : MonoBehaviour
 
     void OnEnable() {
         ResetVariables();
+        activePlayer = true;
     }
 
     private void ResetVariables() {
         xAxis = 0f;
         yAxis = 0f;
         runHeld = false;
-        attackPressed = false;
         aimUpHeld = false;
+        activePlayer = false;
+        attackPressed = false;
+        otherPlayerAttack = false;
         switchCharPressed = false;
     }
 
@@ -89,6 +92,12 @@ public class PlayerInput : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.F))
             attackPressed = false;
 
+        // OTHER PLAYER ATTACK INPUT
+        if (Input.GetKeyDown(KeyCode.Space)) 
+            otherPlayerAttack = true;
+        else if (Input.GetKeyUp(KeyCode.Space))
+            otherPlayerAttack = false;
+
         // SWITCH CHARACTER
         if (Input.GetKeyDown(KeyCode.Tab)) {
             switchCharPressed = true;
@@ -96,14 +105,20 @@ public class PlayerInput : MonoBehaviour
     }
 
     public void SetPlayerType(int type) {
-        if (type == 1)
+        if (type == 1) {
+            activePlayer = true;
             flashPlayer = true;
+        }
         else if (type == 2)
             meleePlayer = true;
     }
 
     public void SetGameState(int state) {
         gameState = state;
+    }
+
+    public void SetAttackPressed(bool flag) {
+        attackPressed = flag;
     }
 
     public float GetXAxis() {
@@ -117,6 +132,10 @@ public class PlayerInput : MonoBehaviour
     }
     public bool GetAttackPressed() {
         return attackPressed;
+    }
+
+    public bool GetOtherPlayerAttackPressed() {
+        return otherPlayerAttack;
     }
 
     public bool GetSwitchCharPressed() {

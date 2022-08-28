@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
 
+    [Header("Player AI")]
+    [SerializeField] private float minDistanceToPlayer;
+    [SerializeField] private float maxDistanceToPlayer;
+
     [Header("Combat Values")]
     [SerializeField] private bool flashPlayer;
     [SerializeField] private bool meleePlayer;
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private float hurtAnimLength;
     private float attackAnimLength;
     private bool isDead, isHurt, isAttacking, isInvincible, attackReady;
+    private bool secondaryAttack, secondaryAttackUp;
     private int gameState;
 
     void Awake() 
@@ -65,7 +70,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SwitchPlayer();
-
+        ResetFlashPlayerAttack();
         if (!isDead && !isHurt && !isAttacking) {
             Movement();
             Animate();
@@ -74,15 +79,20 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchPlayer() {
         if (pi.GetSwitchCharPressed() && switchReady) {
-            Debug.Log("Switching");
             StartCoroutine(SwitchDelay());
         }
     }
 
+    private void ResetFlashPlayerAttack() {
+        if (flashPlayer && !otherPlayerInput.GetOtherPlayerAttackPressed() && isAttacking)
+            isAttacking = false;
+    }
+
     IEnumerator SwitchDelay() {
         switchReady = false;
+        isAttacking = false;
 
-        otherPlayerInput.GetComponent<PlayerInput>().enabled = true;
+        otherPlayerInput.enabled = true;
         pi.enabled = false;
 
         yield return new WaitForSeconds(switchDelay);
@@ -95,13 +105,62 @@ public class PlayerController : MonoBehaviour
         else if (isAttacking && meleePlayer)
             return;
 
-        if (!pi.GetRunInput())
+        // AI CONTROLLED MOVEMENT
+        if (!pi.enabled) {
+            if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) > maxDistanceToPlayer) 
+                pm.AIMovement(otherPlayerInput.transform, runSpeed / 2);
+            else if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) >= minDistanceToPlayer) 
+                pm.AIMovement(otherPlayerInput.transform, walkSpeed / 2);
+            else if (meleePlayer && otherPlayerInput.GetOtherPlayerAttackPressed()) {
+                // PLAYER CONTROLLING AI MOVEMENT
+                Debug.Log("Hello");
+                if (!otherPlayerInput.GetRunInput())
+                    pm.Movement(otherPlayerInput.GetXAxis(), walkSpeed);
+                else
+                    pm.Movement(otherPlayerInput.GetXAxis(), runSpeed);
+            }
+        }
+        else if (!pi.GetRunInput())
             pm.Movement(pi.GetXAxis(), walkSpeed);
         else
             pm.Movement(pi.GetXAxis(), runSpeed);
     }
 
     private void Animate() {
+        // AI Controlled Behavior
+        if (!pi.enabled) {
+            if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) > maxDistanceToPlayer) 
+                pa.RunAnim();
+            else if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) > minDistanceToPlayer) 
+                pa.WalkAnim();
+            else if (Mathf.Abs(transform.position.x - otherPlayerInput.transform.position.x) <= minDistanceToPlayer) 
+                pa.IdleAnim();
+            
+            // Face other player direction
+            if (otherPlayerInput.transform.position.x < transform.position.x)
+                transform.localScale = new Vector2(-1f, transform.localScale.y);
+            else if (otherPlayerInput.transform.position.x >= transform.position.x)
+                transform.localScale = new Vector2(1f, transform.localScale.y);
+
+            // Attack
+            if (flashPlayer) {
+                if (otherPlayerInput.GetOtherPlayerAttackPressed() && pi.GetYAxis() > 0) {
+                    isAttacking = true;
+                    pa.AttackUpAnim();
+                }
+                else if (otherPlayerInput.GetOtherPlayerAttackPressed()) {
+                    isAttacking = true;
+                    pa.AttackAnim();
+                }
+            } 
+            else if (meleePlayer) {
+                if (otherPlayerInput.GetOtherPlayerAttackPressed() && attackReady)
+                    StartCoroutine(MeleeAttack());
+            }
+
+            return;
+        }
+
         if (flashPlayer) {
             if (pi.GetAttackPressed() && pi.GetYAxis() > 0) 
                 pa.AttackUpAnim();

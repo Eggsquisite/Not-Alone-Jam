@@ -635,7 +635,7 @@ MonoBehaviour:
   searchPos: {fileID: 0}
   attackPos: {fileID: 0}
   searchDistance: 10
-  attackDistance: 2
+  attackDistance: 1.5
   moveSpeed: 1
   minMoveSpeed: 0.5
 --- !u!114 &599143390
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ccb87735d81574ba0bb052088aa3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherPlayerInput: {fileID: 1551395459}
 --- !u!114 &741881316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1272,6 +1273,8 @@ MonoBehaviour:
   switchDelay: 0.5
   walkSpeed: 1.5
   runSpeed: 3
+  minDistanceToPlayer: 1.5
+  maxDistanceToPlayer: 3
   flashPlayer: 0
   meleePlayer: 1
   attackDelay: 0.75
@@ -2422,6 +2425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ccb87735d81574ba0bb052088aa3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherPlayerInput: {fileID: 741881315}
 --- !u!114 &1551395460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2438,6 +2442,8 @@ MonoBehaviour:
   switchDelay: 0.5
   walkSpeed: 1.5
   runSpeed: 3
+  minDistanceToPlayer: 1.5
+  maxDistanceToPlayer: 3
   flashPlayer: 1
   meleePlayer: 0
   attackDelay: 0
