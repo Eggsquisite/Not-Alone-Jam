@@ -42,7 +42,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
-
     void Awake()
     {
         if (enemyType == EnemyType.Ghoul) 
@@ -60,8 +59,10 @@ public class EnemyController : MonoBehaviour
 
         currentHealth = maxHealth;
         enemyState = EnemyState.Idle;
-        attackDelay = ec.GetAttackDelay();
+    }
 
+    private void Start() {
+        attackDelay = ec.GetAttackDelay();
         attackAnimLength = ea.GetAnimationLength(EnemyAnimHelper.ENEMY_ATTACK);
         hurtAnimLength = ea.GetAnimationLength(EnemyAnimHelper.ENEMY_HURT);
         timeToDeath = ea.GetAnimationLength(EnemyAnimHelper.ENEMY_DEATH);
@@ -89,19 +90,19 @@ public class EnemyController : MonoBehaviour
         if (ec.GetFullyBurned() || ec.GetCurrentHealth() <= 0) {
             if (enemyState != EnemyState.Death) {
                 es.PlayDeathSFX();
+                isInvincible = true;
                 enemyState = EnemyState.Death;  
+                StartCoroutine(DeathDestroy());
             }
-
-            if (oneRoutine != null)
-                StopCoroutine(oneRoutine);
-            oneRoutine = StartCoroutine(DeathDestroy());
         }
     }
 
     IEnumerator DeathDestroy() {
         ea.DeathAnim();
+        Debug.Log("killing self");
         yield return new WaitForSeconds(timeToDeath);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     public void IsHurt(int damage) {

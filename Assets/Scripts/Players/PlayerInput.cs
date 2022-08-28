@@ -41,8 +41,8 @@ public class PlayerInput : MonoBehaviour
     private void LocalCoop() {
         if (flashPlayer) {
             // MOVEMENT INPUTS
-            xAxis = Input.GetAxisRaw("HorizontalP1");
-            yAxis = Input.GetAxisRaw("VerticalP1");
+            xAxis = Input.GetAxisRaw("Horizontal");
+            yAxis = Input.GetAxisRaw("Vertical");
 
             // RUN INPUT
             if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -77,8 +77,8 @@ public class PlayerInput : MonoBehaviour
 
     private void SinglePlayer() {
         // MOVEMENT INPUTS
-        xAxis = Input.GetAxisRaw("HorizontalP1");
-        yAxis = Input.GetAxisRaw("VerticalP1");
+        xAxis = Input.GetAxisRaw("Horizontal");
+        yAxis = Input.GetAxisRaw("Vertical");
 
         // RUN INPUT
         if (Input.GetKeyDown(KeyCode.LeftShift))

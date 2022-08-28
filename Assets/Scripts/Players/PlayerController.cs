@@ -50,13 +50,13 @@ public class PlayerController : MonoBehaviour
         if (ps == null) ps = GetComponent<PlayerSFX>();
     
         if (meleePlayer) attackReady = true;
-        hurtAnimLength = pa.GetAnimationLength(PlayerAnimHelper.PLAYER_HURT);
-        attackAnimLength = pa.GetAnimationLength(PlayerAnimHelper.PLAYER_ATTACK);
     }
 
     void Start() {
         gameState = GameManager._instance.GetGameState();
 
+        hurtAnimLength = pa.GetAnimationLength(PlayerAnimHelper.PLAYER_HURT);
+        attackAnimLength = pa.GetAnimationLength(PlayerAnimHelper.PLAYER_ATTACK);
         pi.SetGameState(gameState);
         if (flashPlayer)
             pi.SetPlayerType(1);
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
                 pm.AIMovement(otherPlayerInput.transform, walkSpeed - 0.5f);
             else if (meleePlayer && otherPlayerInput.GetOtherPlayerAttackPressed()) {
                 // TODO PLAYER CONTROLLING AI MOVEMENT
-                Debug.Log("Hello");
+                Debug.Log("Hello: " + otherPlayerInput.GetXAxis());
                 if (!otherPlayerInput.GetRunInput())
                     pm.Movement(otherPlayerInput.GetXAxis(), walkSpeed);
                 else
@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour
             if (pi.GetAttackPressed() && pi.GetYAxis() > 0) 
                 pa.AttackUpAnim();
             else if (pi.GetAttackPressed()) {
-                ps.PlayAttackSFX();
                 pa.AttackAnim();
             }
             else if (pi.GetXAxis() == 0)
