@@ -18,6 +18,7 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int attackDamage = 20;
+    [SerializeField] private float attackDelay;
     private int health;
 
 
@@ -98,5 +99,7 @@ public class EnemyCombat : MonoBehaviour
         return burnMaxTime;
     }
 
-    // Melee hit
+    public float GetAttackDelay() {
+        return attackDelay;
+    }
 }

@@ -33,8 +33,9 @@ public class EnemyController : MonoBehaviour
 
     [Header("Attack Values")]
     private bool attackReady = true;
-    private float attackAnimLength, hurtAnimLength;
-    private float timeToDeath;
+    private bool isInvincible;
+    private float attackAnimLength, hurtAnimLength, timeToDeath, attackDelay;
+    private Coroutine oneRoutine = null;
 
     [Header("Health Values")]
     [SerializeField] private int maxHealth = 100;
@@ -57,6 +58,8 @@ public class EnemyController : MonoBehaviour
 
         currentHealth = maxHealth;
         enemyState = EnemyState.Idle;
+        attackDelay = ec.GetAttackDelay();
+
         attackAnimLength = ea.GetAnimationLength(EnemyAnimHelper.ENEMY_ATTACK);
         hurtAnimLength = ea.GetAnimationLength(EnemyAnimHelper.ENEMY_HURT);
         timeToDeath = ea.GetAnimationLength(EnemyAnimHelper.ENEMY_DEATH);
@@ -73,8 +76,11 @@ public class EnemyController : MonoBehaviour
     private void Ghoul() {
         Death();
         Burning();
-        MoveAndAnimate();
-        Attack();
+
+        if (enemyState != EnemyState.Hurt) {
+            MoveAndAnimate();
+            Attack();
+        }
     }
 
     private void Death() {
@@ -82,7 +88,9 @@ public class EnemyController : MonoBehaviour
             if (enemyState != EnemyState.Death) 
                 enemyState = EnemyState.Death;  
 
-            StartCoroutine(DeathDestroy());
+            if (oneRoutine != null)
+                StopCoroutine(oneRoutine);
+            oneRoutine = StartCoroutine(DeathDestroy());
         }
     }
 
@@ -93,21 +101,30 @@ public class EnemyController : MonoBehaviour
     }
 
     public void IsHurt(int damage) {
-        ec.TakeDamage(damage);
+        if (isInvincible)
+            return;
 
+        ec.TakeDamage(damage);
         if (ec.GetCurrentHealth() > 0) {
-            StartCoroutine(HurtDelay());
+            Debug.Log("taking dmg");
+            if (oneRoutine != null)
+                StopCoroutine(oneRoutine);
+            oneRoutine = StartCoroutine(HurtDelay());
         }
     }
 
     IEnumerator HurtDelay() {
         ea.HurtAnim();
         attackReady = false;
+        isInvincible = true;
         enemyState = EnemyState.Hurt;
         yield return new WaitForSeconds(hurtAnimLength);
 
-        attackReady = true;
         enemyState = EnemyState.Idle;
+        yield return new WaitForSeconds(0.15f);
+        isInvincible = false;
+        yield return new WaitForSeconds(attackDelay / 2);
+        attackReady = true;
     }
 
     private void Burning() {
@@ -158,20 +175,23 @@ public class EnemyController : MonoBehaviour
             else if (em.Attack() == 2) 
                 transform.localScale = new Vector2(1f, transform.localScale.y);
             
-            StartCoroutine(AttackDelay());
+            if (oneRoutine != null)
+                StopCoroutine(oneRoutine);
+            oneRoutine = StartCoroutine(AttackDelay());
         }
     }
 
     IEnumerator AttackDelay() {
+        attackReady = false;
+        Debug.Log("Attacking");
         yield return new WaitForSeconds(0.5f);
 
         ea.AttackAnim();
-        attackReady = false;
         enemyState = EnemyState.Attacking;
         yield return new WaitForSeconds(attackAnimLength);
 
         enemyState = EnemyState.Idle;
-        yield return new WaitForSeconds(em.GetAttackDelay());
+        yield return new WaitForSeconds(attackDelay);
         attackReady = true;
     }
 }

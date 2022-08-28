@@ -23,9 +23,6 @@ public class EnemyMovement : MonoBehaviour
     private float baseMoveSpeed, speedToUpdateMoveSpeed;
     private bool followFlag, isBurning;
 
-    [Header("Attack Values")]
-    [SerializeField] private float attackDelay;
-
     private void Awake() {
         baseMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -144,9 +141,5 @@ public class EnemyMovement : MonoBehaviour
             return 0;
 
         return 0;
-    }
-
-    public float GetAttackDelay() {
-        return attackDelay;
     }
 }

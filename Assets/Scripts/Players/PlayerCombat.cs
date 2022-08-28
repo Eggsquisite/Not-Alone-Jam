@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [Header("Colliders")]
-    [SerializeField] private Collider2D upColl;
-    [SerializeField] private Collider2D straightColl;
+    [Header("Attack Components")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float attackRange;
+    [SerializeField] private int attackDamage;
 
     [Header("Health Values")]
     [SerializeField] private int maxHealth = 100;
@@ -18,10 +20,14 @@ public class PlayerCombat : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    // Animation attack for melee player
+    public void AttackEnemies() {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+
+        // Damage them
+        foreach(Collider2D enemy in hitEnemies) {
+            enemy.GetComponent<EnemyController>().IsHurt(attackDamage);
+        }
     }
 
     public void TakeDamage(int damage) {
