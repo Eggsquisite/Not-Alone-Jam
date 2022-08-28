@@ -11,12 +11,20 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private float burnMaxTime;
     private float burnTime;
     private bool isBurned, fullyBurned;
-
     
+    [Header("Combat Values")]
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int attackDamage = 20;
+    private int health;
+
 
     // Start is called before the first frame update
     void Awake()
     {
+        health = maxHealth;
         if (coll == null) coll = GetComponent<Collider2D>();
     }
 
@@ -58,6 +66,24 @@ public class EnemyCombat : MonoBehaviour
             burnTime -= Time.deltaTime;
         else if (burnTime < 0)
             burnTime = 0f;
+    }
+
+    // Animation attack
+    public void AttackPlayers() {
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+        // Damage them
+        foreach(Collider2D player in hitPlayers) {
+            player.GetComponent<PlayerController>().TakeDamage(attackDamage);
+        }
+    }
+
+    public void TakeDamage(int damage) {
+        health -= damage;
+    }
+
+    public float GetCurrentHealth() {
+        return health;
     }
 
     public bool GetBurnedState() {

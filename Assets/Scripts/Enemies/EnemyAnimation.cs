@@ -24,8 +24,8 @@ public class EnemyAnimation : MonoBehaviour
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
-        ac = anim.runtimeAnimatorController;
+        if (anim == null) anim = GetComponent<Animator>();
+        if (ac == null) ac = anim.runtimeAnimatorController;
     }
 
     void Update() {

@@ -14,8 +14,8 @@ public class PlayerAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        anim = GetComponent<Animator>();
-        ac = anim.runtimeAnimatorController;
+        if (anim == null) anim = GetComponent<Animator>();
+        if (ac == null) ac = anim.runtimeAnimatorController;
     }
 
     // Animation Helper Functions ////////////////////////////////////////
@@ -25,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     private void ReplayAnimation(string newAnim) {
         AnimHelper.ReplayAnimation(anim, ref currentState, newAnim);
     }
-    private float GetAnimationLength(string newAnim) {
+    public float GetAnimationLength(string newAnim) {
         return AnimHelper.GetAnimClipLength(ac, newAnim);
     }
 

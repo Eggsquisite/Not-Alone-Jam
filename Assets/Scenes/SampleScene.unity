@@ -494,12 +494,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599143383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.04, y: -2.06, z: 0}
+  m_LocalPosition: {x: -1.32, y: -2.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 665475051}
   - {fileID: 1904694377}
+  - {fileID: 977007190}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -591,7 +592,6 @@ MonoBehaviour:
   attackDistance: 2
   moveSpeed: 1
   minMoveSpeed: 0.5
-  speedToSlowMoveSpeed: 0.2
   attackDelay: 1.5
 --- !u!114 &599143390
 MonoBehaviour:
@@ -622,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyState: 0
+  maxHealth: 100
 --- !u!114 &599143392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,6 +636,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnMaxTime: 4
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  attackPoint: {fileID: 977007190}
+  attackRange: 0.5
+  maxHealth: 100
+  attackDamage: 20
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1129,37 @@ MonoBehaviour:
   - {x: 0.39066792, y: 0.33365297, z: 0}
   - {x: 0.22666931, y: 0.6229979, z: 0}
   - {x: -0.035341263, y: 0.595665, z: 0}
+--- !u!1 &977007189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977007190}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &977007190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977007189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.47, y: -0.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 599143385}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977410994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2021,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
   runSpeed: 3
+  flashPlayer: 1
+  meleePlayer: 0
+  hurtInvincibleDelay: 0.5
 --- !u!114 &1551395461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,8 +2036,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bf038a9f40fc54cb53634fe63c6b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upColl: {fileID: 0}
-  straightColl: {fileID: 0}
+  upColl: {fileID: 977410997}
+  straightColl: {fileID: 649013102}
+  maxHealth: 100
 --- !u!1 &1582579408
 GameObject:
   m_ObjectHideFlags: 0
